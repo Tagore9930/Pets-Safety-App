@@ -1,0 +1,59 @@
+<div>
+  <div class="header">
+    <div class="row justify-content-between bg-white">
+      <div class="col-12">
+        <a href="/" class="app-icon py-2">
+          <img src="/assets/App-Icon.jpg" alt="App-Icon">
+          <span class="app-heading text-dark fw-bold px-2">Pets App</span>
+        </a>
+
+        <a class="pt-1 pe-3 float-end d-block d-sm-none" data-bs-toggle="offcanvas" data-bs-target="#dropdown">
+          <i class="bi bi-list fs-1 fw-bold text-dark"></i>
+        </a>
+        <a href="#" class="profile pt-2 pe-3 float-end" data-bs-toggle="dropdown">
+          <img class="profile-icon" src="/assets/profile.png" alt="">
+        </a>
+
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="dropdown" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Pages</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <ul class="list-group">
+            <li class="d-block px-3 py-2">
+              <a routerLink="/home" class="nav-link active"><span>Home</span></a>
+            </li>
+            <li class="d-block px-3 py-2">
+              <a routerLink="/services" class="nav-link"><span>Services</span></a>
+            </li>
+            <li class="d-block px-3 py-2">
+              <a routerLink="/about" class="nav-link"><span>About</span></a>
+            </li>
+          </ul>
+        </div>
+
+        <ul class="nav h-100 float-end pe-2 d-none d-sm-flex">
+          <li class="nav-item">
+            <a href="#" class="nav-link active"><span>Home</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link"><span>Services</span></a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link"><span>About</span></a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+
+</div>

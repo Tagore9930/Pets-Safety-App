@@ -1,0 +1,58 @@
+@import "/src/styles.scss";
+
+.home {
+  .header {
+    background: url('/assets/home-images/home-img-1.jpg') center center / cover no-repeat;
+    padding: 150px 0px 100px;
+    position: relative;
+
+    .overlay {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  .body {
+    position: relative;
+    width: 672px;
+    // height: 672px;
+    margin: -100px auto 0px;
+    padding: 25px 15px 9px;
+    box-sizing: border-box;
+
+    .item {
+      list-style: none;
+      min-height: 140px;
+      background-color: $colorTwo;
+      border: 1px solid $colorOne;
+      border-radius: 5px;
+      margin: 10px auto;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: $colorOne 0px 0px 0px 2px;
+        background-color: $colorTwo-hover;
+      }
+
+      &.Services-btn {
+        min-height: 50px !important;
+      }
+    }
+
+    .bi-youtube:hover,
+    .bi-twitter:hover,
+    .bi-linkedin:hover,
+    .bi-facebook:hover {
+      border-bottom: solid $colorTwo;
+    }
+
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .body {
+    width: 100% !important;
+  }
+}

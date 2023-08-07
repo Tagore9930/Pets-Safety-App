@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+$colorOne: #FFCD98;
+$colorTwo: #573F32;
+
+$colorOne-hover: #fae0c5;
+$colorTwo-hover: #a86d4d;
+
+html, body, .row {
+  margin: 0%;
+  padding: 0%;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: rgba($colorOne, $alpha: 0.5);
+}
+
+
+
+.text-colorOne { color: $colorOne; }
+
+.text-colorTwo { color: $colorTwo; }
+
+.bg-colorOne { background-color: $colorOne; }
+
+.bg-colorTwo { background-color: $colorTwo; }
+
+.bg-colorOne-h:hover { background-color: $colorOne-hover; }
+
+.bg-colorTwo-h:hover { background-color: $colorTwo-hover; }
+
+.cursor-p { cursor: pointer;}

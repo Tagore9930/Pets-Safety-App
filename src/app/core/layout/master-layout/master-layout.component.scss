@@ -1,0 +1,56 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.app-icon {
+  display: inline-block;
+  height: 100%;
+  text-decoration: none;
+
+  img {
+    width: 40px;
+    border-radius: 50%;
+  }
+}
+
+
+.profile {
+  .profile-icon {
+    width: 40px;
+    background-color: #FFCD98;
+    border-radius: 50%;
+  }
+}
+
+.active {
+  span {
+    color: rgb(0, 153, 255);
+    border-bottom: solid rgb(0, 153, 255);
+  }
+}
+
+.nav-item {
+  font-weight: 600;
+
+  .nav-link {
+    color: #000;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    :hover {
+      color: rgb(0, 153, 255);
+      border-bottom: solid rgb(0, 153, 255);
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .row { background-color: transparent !important; }
+
+  .bi-list, .app-heading { color: white !important; }
+}
