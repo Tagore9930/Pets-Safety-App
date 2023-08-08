@@ -1,0 +1,28 @@
+@import "/src/styles.scss";
+
+.about {
+  padding: 150px 0px 10px;
+  width: 672px;
+
+  .heading { letter-spacing: 2.5px;}
+
+  .paragraph {
+    text-align: justify;
+    line-height: 2.5;
+    text-align-last: center;
+    color: $colorTwo;
+  }
+
+  .bi:hover {
+    border-bottom: solid $colorTwo;
+  }
+
+}
+
+@media screen and (max-width: 576px) {
+  .about { width: 100% !important; }
+
+  .paragraph { padding: 0px 20px !important;}
+
+  img { border-radius: 0px !important; }
+}
