@@ -1,0 +1,49 @@
+<div class="services container-sm">
+  <h4 class="text-colorTwo text-center fw-bold mb-3">Services</h4>
+  <div class="row px-2">
+    <div class="col-6 p-2">
+      <mat-form-field class="example-form-field w-100" appearance="outline">
+        <!-- <mat-label>Clearable input</mat-label> -->
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput type="text" [(ngModel)]="value" placeholder="sreach filters">
+        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div class="col-6 p-2">
+      <ul class="nav float-end text-secondary">
+        <li class="px-1 d-flex align-items-center">
+          <i class="bi bi-list"></i>
+        </li>
+        <li class="px-1 d-flex align-items-center text-colorTwo">
+          <i class="bi bi-grid-fill"></i>
+        </li>
+        <li class="px-1 d-flex align-items-center">
+          <i class="bi bi-grid-3x2-gap-fill"></i>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 col-12 p-3" *ngFor="let item of servicesList">
+      <div class="card bg-transparent">
+        <div class="card-image">
+          <img src="/assets/services-images/behavior-classes.jpg" class="w-100 rounded-top" alt="...">
+        </div>
+        <div class="card-body">
+          <div class="card-content d-block">
+            <p class="card-text text-colorTwo">Dog behavior Training</p>
+          <h5 class="card-title text-colorTwo fw-bold">$30</h5>
+          </div>
+          <button class="btn bg-colorTwo bg-colorTwo-h text-white w-100 p-2">Order Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="px-3">
+      <button class="btn bg-colorTwo bg-colorTwo-h text-white fw-bold w-100 mt-3">Homepage</button>
+    </div>
+  </div>
+</div>
+
