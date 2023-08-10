@@ -1,12 +1,68 @@
+@import "/src/styles.scss";
+
 .services {
   padding: 150px 0px 100px;
   width: 672px;
 
   li {
-    font-size: 25px;
+    font-size: 30px;
     cursor: pointer;
+
+    .svg-icon {
+      width: 15px;
+      height: 15px;
+      fill: rgb(108, 117, 125);
+      margin-bottom: 2px;
+    }
+
+    &.active {
+      color: $colorTwo;
+
+      rect { fill: $colorTwo; }
+    }
+
     .bi-grid-fill {
       font-size: 20px;
+    }
+  }
+
+  .col-block.cards {
+    width: 100% !important;
+    .card {
+      flex-direction: row !important;
+      height: 100px !important;
+
+      .card-image {
+        width: 25% !important;
+
+        img {
+          height: -webkit-fill-available !important;
+          border-radius: 5px 0px 0px 5px !important;
+        }
+      }
+
+      .card-body {
+        width: 75% !important;
+        font-size: 13px !important;
+        display: flex;
+
+        .card-content {
+          width: 50% !important;
+
+          .card-text {
+            margin-bottom: 0px !important;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+        }
+
+        .btn {
+          font-size: 13px !important;
+          width: auto !important;
+          margin: auto 0px 0px auto !important;
+        }
+      }
     }
   }
 }
@@ -19,51 +75,16 @@
   padding-top: 0px !important;
   padding-bottom: 0px !important;
 }
+
 ::ng-deep mat-form-field,
 ::ng-deep .mat-mdc-text-field-wrapper,
-::ng-deep .mat-mdc-form-field-flex, input {
+::ng-deep .mat-mdc-form-field-flex,
+input {
   height: 40px !important;
 }
 
 @media screen and (max-width: 576px) {
   .services {
     width: 100% !important;
-  }
-
-  .card {
-    flex-direction: row !important;
-    height: 100px !important;
-
-    .card-image {
-      width: 25% !important;
-
-      img {
-        height: -webkit-fill-available !important;
-        border-radius: 5px 0px 0px 5px !important;
-      }
-    }
-
-    .card-body {
-      width: 75% !important;
-      font-size: 13px !important;
-      display: flex;
-
-      .card-content {
-        width: 50% !important;
-
-        .card-text {
-          margin-bottom: 0px !important;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          overflow: hidden;
-        }
-      }
-
-      .btn {
-        font-size: 13px !important;
-        width: auto !important;
-        margin: auto 0px 0px auto !important;
-      }
-    }
   }
 }

@@ -3,7 +3,6 @@
   <div class="row px-2">
     <div class="col-6 p-2">
       <mat-form-field class="example-form-field w-100" appearance="outline">
-        <!-- <mat-label>Clearable input</mat-label> -->
         <mat-icon matPrefix>search</mat-icon>
         <input matInput type="text" [(ngModel)]="value" placeholder="sreach filters">
         <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
@@ -13,21 +12,28 @@
     </div>
     <div class="col-6 p-2">
       <ul class="nav float-end text-secondary">
-        <li class="px-1 d-flex align-items-center">
-          <i class="bi bi-list"></i>
+        <li class="mx-1 d-flex align-items-center filter-single" (click)="filter('col-block', 'filter-single')">
+          <svg class="svg-icon">
+            <rect width="15" height="3" rx="1.5"></rect>
+            <rect width="15" height="3" y="6" rx="1.5"></rect>
+            <rect width="15" height="3" y="12" rx="1.5"></rect>
+          </svg>
         </li>
-        <li class="px-1 d-flex align-items-center text-colorTwo">
+        <li class="mx-1 d-flex align-items-center filter-double active" (click)="filter('col-6', 'filter-double')">
           <i class="bi bi-grid-fill"></i>
         </li>
-        <li class="px-1 d-flex align-items-center">
+        <li class="mx-1 d-flex align-items-center d-none d-sm-block filter-triple" (click)="filter('col-4', 'filter-triple')">
           <i class="bi bi-grid-3x2-gap-fill"></i>
+        </li>
+        <li class="mx-1 d-flex align-items-center d-sm-none single-full" (click)="filter('col-12', 'single-full')">
+          <i class="bi bi-square-fill fs-5"></i>
         </li>
       </ul>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-sm-6 col-12 p-3" *ngFor="let item of servicesList">
+    <div class="col-6 cards p-3" *ngFor="let item of servicesList">
       <div class="card bg-transparent">
         <div class="card-image">
           <img src="/assets/services-images/behavior-classes.jpg" class="w-100 rounded-top" alt="...">
@@ -35,7 +41,7 @@
         <div class="card-body">
           <div class="card-content d-block">
             <p class="card-text text-colorTwo">Dog behavior Training</p>
-          <h5 class="card-title text-colorTwo fw-bold">$30</h5>
+            <h5 class="card-title text-colorTwo fw-bold">$30</h5>
           </div>
           <button class="btn bg-colorTwo bg-colorTwo-h text-white w-100 p-2">Order Now</button>
         </div>
@@ -46,4 +52,3 @@
     </div>
   </div>
 </div>
-
