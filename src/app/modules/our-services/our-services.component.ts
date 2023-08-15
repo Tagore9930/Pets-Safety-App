@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { OurService } from 'src/app/services/our-services/our-service';
+import { OurServicesService } from 'src/app/services/our-services/our-services.service';
+import { SericesDetialsComponent } from './serices-detials/serices-detials.component';
 
 @Component({
   selector: 'app-services',
@@ -6,58 +10,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./our-services.component.scss']
 })
 export class ServicesComponent {
-  value = '';
-  previousFilter: string = "col-6";
-  previousFilterType: string = "filter-double";
-  servicesList = [
-    {
-      img: '/assets/services-images/behavior-classes.jpg',
-      name: 'Dog behavior Training',
-      amount: '$30.00'
-    },
-    {
-      img: '/assets/services-images/dog-day-activity.jpg',
-      name: 'Dog Day Activity',
-      amount: '$10.00'
-    },
-    {
-      img: '/assets/services-images/doggy-camp.jpg',
-      name: 'Doggy Day Camp',
-      amount: '$5.00'
-    },
-    {
-      img: '/assets/services-images/health-package.jpg',
-      name: 'Dog Health Package',
-      amount: '$50.00'
-    },
-    {
-      img: '/assets/services-images/pet-sitting.jpg',
-      name: 'Pet Sitting',
-      amount: '$20.00'
-    },
-    {
-      img: '/assets/services-images/training-webinar.jpg',
-      name: 'Dog Training Webinar',
-      amount: '$60.00'
-    }
-  ];
+  ourServicesList!: OurService[];
+  services: OurServicesService = inject(OurServicesService);
+  filteredServicesList!: OurService[];
 
-
-  constructor() { }
-
-  columsFilter(filter: string, filterType: string) {
-    let cards = document.querySelectorAll(".cards");
-    document.querySelector("." + this.previousFilterType)?.classList.remove("active")
-    document.querySelector("." + filterType)?.classList.add("active")
-    cards.forEach((e) => e.classList.replace(this.previousFilter, filter))
-    this.previousFilter = filter;
-    this.previousFilterType = filterType;
+  constructor(private dialog: MatDialog) {
+    this.ourServicesList = this.services.getAllOurServices();
+    this.filteredServicesList = this.ourServicesList;
   }
 
-  sreachFilter() {
-    
+  openDialog(item: object) {
+    this.dialog.open(SericesDetialsComponent, {
+      width: '650px',
+      data: item
+    });
   }
 
+  stop(event: Event) { event.stopPropagation() }
 
-
+  receiveSearchData(data: any) {
+    if (data!) { this.filteredServicesList = this.ourServicesList; }
+    this.filteredServicesList = this.ourServicesList.filter(e => e?.name.toLowerCase().includes(data.toLowerCase()));
+  }
 }

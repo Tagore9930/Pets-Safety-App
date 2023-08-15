@@ -1,41 +1,11 @@
 <div class="services container-sm">
   <h4 class="text-colorTwo text-center fw-bold mb-3">Services</h4>
-  <div class="row px-2">
-    <div class="col-6 p-2">
-      <mat-form-field class="example-form-field w-100" appearance="outline">
-        <mat-icon matPrefix>search</mat-icon>
-        <input matInput type="text" [(ngModel)]="value" placeholder="sreach filters" (keypress)="sreachFilter()">
-        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field>
-      <p>{{value}}</p>
-    </div>
-    <div class="col-6 p-2">
-      <ul class="nav float-end text-secondary">
-        <li class="mx-1 d-flex align-items-center filter-single" (click)="columsFilter('col-block', 'filter-single')">
-          <svg class="svg-icon">
-            <rect width="15" height="3" rx="1.5"></rect>
-            <rect width="15" height="3" y="6" rx="1.5"></rect>
-            <rect width="15" height="3" y="12" rx="1.5"></rect>
-          </svg>
-        </li>
-        <li class="mx-1 d-flex align-items-center filter-double active" (click)="columsFilter('col-6', 'filter-double')">
-          <i class="bi bi-grid-fill"></i>
-        </li>
-        <li class="mx-1 d-flex align-items-center d-none d-sm-block filter-triple" (click)="columsFilter('col-4', 'filter-triple')">
-          <i class="bi bi-grid-3x2-gap-fill"></i>
-        </li>
-        <li class="mx-1 d-flex align-items-center d-sm-none single-full" (click)="columsFilter('col-12', 'single-full')">
-          <i class="bi bi-square-fill fs-5"></i>
-        </li>
-      </ul>
-    </div>
-  </div>
+
+  <app-filter-services (sendData)="receiveSearchData($event)" ></app-filter-services>
 
   <div class="row">
-    <div class="col-6 cards p-3" *ngFor="let item of servicesList">
-      <div class="card bg-transparent">
+    <div class="col-6 cards p-3" *ngFor="let item of filteredServicesList">
+      <div mat-button (click)="openDialog(item)" class="card bg-transparent pe-auto">
         <div class="card-image">
           <img src="{{item.img}}" class="w-100 rounded-top" alt="{{item.name}}">
         </div>
@@ -44,12 +14,13 @@
             <p class="card-text text-colorTwo">{{item.name}}</p>
             <h5 class="card-title text-colorTwo fw-bold">{{item.amount}}</h5>
           </div>
-          <button class="btn bg-colorTwo bg-colorTwo-h text-white w-100 p-2">Order Now</button>
+          <button [routerLink]="['/about']" (click)="stop($event)"
+            class="btn bg-colorTwo text-white w-100 p-2">Order Now</button>
         </div>
       </div>
     </div>
     <div class="px-3">
-      <button routerLink="/home" class="btn bg-colorTwo bg-colorTwo-h text-white fw-bold w-100 mt-3">Homepage</button>
+      <button routerLink="/home" class="btn bg-colorTwo text-white fw-bold w-100 mt-3">Homepage</button>
     </div>
   </div>
 </div>

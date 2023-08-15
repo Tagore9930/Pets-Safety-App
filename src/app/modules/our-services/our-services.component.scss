@@ -4,33 +4,13 @@
   padding: 150px 0px 100px;
   width: 672px;
 
-  li {
-    font-size: 30px;
-    cursor: pointer;
-
-    .svg-icon {
-      width: 15px;
-      height: 15px;
-      fill: rgb(108, 117, 125);
-      margin-bottom: 2px;
-    }
-
-    &.active {
-      color: $colorTwo;
-
-      rect { fill: $colorTwo; }
-    }
-
-    .bi-grid-fill {
-      font-size: 20px;
-    }
-  }
+  .btn:active, .btn:hover { background-color: $colorTwo-hover; }
 
   .col-block.cards {
     width: 100% !important;
+
     .card {
       flex-direction: row !important;
-      height: 100px !important;
 
       .card-image {
         width: 25% !important;
@@ -65,22 +45,6 @@
       }
     }
   }
-}
-
-// Material input styles
-
-::ng-deep .mat-mdc-form-field-infix,
-::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
-  min-height: 40px !important;
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
-}
-
-::ng-deep mat-form-field,
-::ng-deep .mat-mdc-text-field-wrapper,
-::ng-deep .mat-mdc-form-field-flex,
-input {
-  height: 40px !important;
 }
 
 @media screen and (max-width: 576px) {

@@ -4,6 +4,8 @@ import { ServicesComponent } from './our-services.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialExModule } from 'src/app/shared/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterServicesComponent } from './filter-services/filter-services.component';
+import { SericesDetialsComponent } from './serices-detials/serices-detials.component';
 
 const routes: Routes = [
   {
@@ -14,7 +16,9 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    ServicesComponent
+    ServicesComponent,
+    FilterServicesComponent,
+    SericesDetialsComponent
   ],
   imports: [
     CommonModule,

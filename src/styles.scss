@@ -5,21 +5,51 @@ $colorTwo: #573F32;
 $colorOne-hover: #fae0c5;
 $colorTwo-hover: #a86d4d;
 
-html, body, .row {
+html, body {
+  margin: 0%;
+  padding: 0%;
+  width: 100%;
+  height: 100%;
+ }
+
+.row {
   margin: 0%;
   padding: 0%;
   width: 100%;
 }
 
-html, body {
-  height: 100%;
-}
-
 body {
   background-color: rgba($colorOne, $alpha: 0.5);
+  margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+/* width */
+::-webkit-scrollbar { width: 4px; }
 
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(175, 174, 174);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $colorTwo-hover;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $colorTwo;
+}
+
+::selection {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.pe-auto { cursor: pointer !important; }
 
 .text-colorOne { color: $colorOne; }
 
@@ -32,8 +62,3 @@ body {
 .bg-colorOne-h:hover { background-color: $colorOne-hover; }
 
 .bg-colorTwo-h:hover { background-color: $colorTwo-hover; }
-
-.cursor-p { cursor: pointer;}
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

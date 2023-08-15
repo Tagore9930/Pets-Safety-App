@@ -1,0 +1,19 @@
+<div class="dailog-box">
+  <h1 mat-dialog-title>
+    Service Details
+    <i class="bi bi-x-lg fw-bold float-end mt-3 bg-secondary-subtle px-2 rounded-circle py-0" mat-dialog-close></i>
+  </h1>
+  <hr class="my-0">
+  <div mat-dialog-content>
+    <img src="{{data.img}}" alt="{{data.name}}" class="w-50 d-block mx-auto">
+
+    <h4>{{data.name}} <span class="text-dark float-end">$30</span></h4>
+    <hr class="my-0">
+    <p class="description my-3"><b class="fs-5">Description: </b>{{data?.description}} </p>
+  </div>
+  <div mat-dialog-actions  class="dialog-footer">
+    <!-- <button routerLink="/about" mat-dialog-close class="btn bg-colorTwo text-white mx-2">Add Cart</button> -->
+    <button routerLink="/about" mat-dialog-close class="btn bg-colorTwo text-white mx-2">Order Now</button>
+  </div>
+
+</div>

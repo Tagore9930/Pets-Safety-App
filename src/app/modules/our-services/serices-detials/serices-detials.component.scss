@@ -1,0 +1,14 @@
+@import "/src/styles.scss";
+
+.bi-x-lg:hover {
+  box-shadow:  0px 0px 5px 0.5px rgba(0, 0, 0, 0.2);
+}
+
+.dialog-footer {
+  background-color: rgba($colorOne, $alpha: 0.5) !important;
+  display: flex;
+  justify-content: flex-end;
+
+  .btn:active, .btn:hover { background-color: $colorTwo-hover; }
+}
+
