@@ -16,11 +16,27 @@
   }
 }
 
+.dropdown-menu::before {
+  background: #fff;
+    content: "";
+    display: inline-block;
+    height: 13px;
+    position: absolute;
+    right: 27px;
+    top: -6px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    width: 13px;
+    border-top: 1px solid #0000002d;
+    border-left: 1px solid #0000002d;
+}
+
+.dropdown-menu { width: 250px; }
 
 .profile {
   .profile-icon {
     width: 40px;
-    background-color: #FFCD98;
+    background-color: rgba(165, 165, 165, 0.454);
     border-radius: 50%;
   }
 }
@@ -47,4 +63,15 @@
       border-bottom: solid rgb(0, 153, 255);
     }
   }
+}
+
+.bi-arrow-left-short::before {
+  vertical-align: sub;
+}
+
+.name {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translate(-25px, 0px);
 }

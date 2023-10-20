@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./master-layout.component.scss']
 })
 export class MasterLayoutComponent {
-
+  userSignIn: boolean = false;
 }
