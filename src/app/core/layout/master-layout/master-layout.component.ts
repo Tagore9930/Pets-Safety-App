@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class MasterLayoutComponent {
   userSignIn: boolean = false;
+  headerTwo: boolean = false;
+  headerTwoHeading: string = "Fill Out";
 }

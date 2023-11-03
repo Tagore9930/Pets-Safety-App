@@ -1,0 +1,113 @@
+form {
+  margin: 144px auto 100px;
+  width: 752px;
+  border: 5px solid #e77893;
+}
+
+header {
+  width: 600px;
+  padding: 40px 52px;
+}
+
+.header-logo {
+  width: 187px;
+  height: 140px;
+}
+
+.header-title { font-size: 35px; }
+
+main { padding: 0px 38px; }
+
+.column { height: 64px; }
+
+// --------------------------( Rating Design )------------------------------------
+
+.rate {
+  height: 46px;
+
+  label {
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    background: url("/assets/training-progress-images/rating.jpg");
+    background-position: 0px 0px;
+    background-size: 175px 35px;
+
+    &:hover,
+    &:hover~label { background-position: -35px 0px; }
+  }
+
+  input {
+    display: none;
+
+    &:checked,
+    &:checked~label { background-position: -70px 0px; }
+  }
+}
+
+// --------------------------( Normal Inputs Design )------------------------------------
+
+::ng-deep.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+  min-height: 40px !important;
+  padding: 0px !important;
+}
+
+::ng-deep label { padding-bottom: 15px !important; }
+
+// --------------------------( Calendar Inputs Design )------------------------------------
+
+::ng-deep.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+  padding: 0px !important;
+  display: flex;
+  align-items: center;
+}
+
+::ng-deep .mat-mdc-form-field-infix,
+::ng-deep .mat-mdc-form-field-icon-prefix,
+.mat-mdc-form-field-icon-suffix { min-height: 35px !important; }
+
+::ng-deep .mat-mdc-icon-button.mat-mdc-button-base {
+  height: 35px !important;
+  padding: 0px 12px !important;
+}
+
+// --------------------------( Textarea Inputs Design )------------------------------------
+
+::ng-deep .textarea .mdc-text-field { padding: 0px 0px 0px 16px !important; }
+textarea { min-height: 150px; }
+
+
+// --------------------------( Media Query )------------------------------------
+
+@media screen and (max-width: 768px) {
+
+  form { width: 565px !important; }
+  header { display: block !important; }
+  .row { margin: 50px auto !important; }
+
+  .comments,
+  .rating {
+    margin: 0px auto !important;
+
+    p { margin-top: 0px !important; }
+  }
+  .rating { margin-bottom: 48px !important; }
+}
+
+@media screen and (max-width: 565px) {
+
+  header { padding: 40px 0px !important; }
+  main { padding: 0px !important; }
+  form { width: 100% !important; }
+
+  .header-title { font-size: 25px !important; }
+
+  .rate {
+    label {
+      margin: auto 5px !important;
+      width: 30px !important;
+      height: 25px !important;
+      background-size: 150px 25px;
+    }
+  }
+}

@@ -1,66 +1,77 @@
 <div class="header">
   <div class="row justify-content-between bg-white">
-    <div *ngIf="false" class="col-12">
-      <a href="/" class="app-icon py-2">
+    <div class="col-12 position-relative">
+      <a *ngIf="!headerTwo" href="/" class="app-icon py-2">
         <img src="/assets/header-images/App-Icon.jpg" alt="App-Icon">
         <span class="text-dark fw-bold px-2">Pets App</span>
       </a>
 
-      <a class="pt-1 pe-3 float-end d-block d-sm-none" data-bs-toggle="offcanvas" data-bs-target="#dropdown">
-        <i class="bi bi-list fs-1 fw-bold text-dark"></i>
-      </a>
-      <a href="#" class="profile pt-2 pe-3 float-end" data-bs-toggle="dropdown">
-        <img class="profile-icon" src="/assets/header-images/profile.png" alt="">
+      <a *ngIf="headerTwo" href="/" class="app-icon py-2 text-dark fw-bold">
+        <i class="bi bi-arrow-left-short fs-3"></i>
+        <span class="app-heading">Back</span>
       </a>
 
-      <ul class="dropdown-menu py-0 mt-2">
+      <div *ngIf="!headerTwo" class="sidebar-mobile d-inline">
+        <a class="pt-1 pe-3 float-end d-block d-sm-none" data-bs-toggle="offcanvas" data-bs-target="#dropdown">
+          <i class="bi bi-list fs-1 fw-bold text-dark"></i>
+        </a>
 
-        <div *ngIf="!userSignIn">
-          <li class="dropdown-item">Action</li>
-          <hr class="my-2">
-          <li class="dropdown-item bg-colorTwo-h pe-auto">Another action</li>
-          <li class="dropdown-item bg-colorTwo-h pe-auto">
-            <span>Profile</span>
-          </li>
-          <li class="dropdown-item bg-colorTwo-h pe-auto rounded-bottom">
-            Previous Orders
-          </li>
+        <div class="offcanvas offcanvas-start w-75" tabindex="-1" id="dropdown" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Pages</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <ul class="list-group">
+            <li class="d-block px-3 py-2">
+              <a routerLink="/home" routerLinkActive="active" class="nav-link"><span>Home</span></a>
+            </li>
+            <li class="d-block px-3 py-2">
+              <a routerLink="/services" routerLinkActive="active" class="nav-link"><span>Services</span></a>
+            </li>
+            <li class="d-block px-3 py-2">
+              <a routerLink="/about" routerLinkActive="active" class="nav-link"><span>About</span></a>
+            </li>
+          </ul>
         </div>
-        <div *ngIf="userSignIn">
-          <li class="dropdown-item bg-colorTwo-h pe-auto">Action</li>
-          <hr class="my-2">
-          <li class="dropdown-item bg-colorTwo-h pe-auto">
-            <span>Profile</span>
-          </li>
-          <li class="dropdown-item bg-colorTwo-h pe-auto">
-            Previous Orders
-          </li>
-          <li class="dropdown-item bg-colorTwo-h pe-auto rounded-bottom">
-            <i class="bi bi-door-open"></i>
-            Logout
-          </li>
-        </div>
-      </ul>
+      </div>
 
-      <div class="offcanvas offcanvas-start w-75" tabindex="-1" id="dropdown" aria-labelledby="offcanvasNavbarLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Pages</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <ul class="list-group">
-          <li class="d-block px-3 py-2">
-            <a routerLink="/home" routerLinkActive="active" class="nav-link"><span>Home</span></a>
-          </li>
-          <li class="d-block px-3 py-2">
-            <a routerLink="/services" routerLinkActive="active" class="nav-link"><span>Services</span></a>
-          </li>
-          <li class="d-block px-3 py-2">
-            <a routerLink="/about" routerLinkActive="active" class="nav-link"><span>About</span></a>
-          </li>
+      <div class="dropdown d-inline">
+        <a class="profile mt-2 me-3 float-end pe-auto" data-bs-toggle="dropdown">
+          <img class="profile-icon" src="/assets/header-images/profile.png" alt="">
+        </a>
+
+        <ul class="dropdown-menu py-0 mt-2" id="dropdown">
+          <div *ngIf="!userSignIn">
+            <li class="dropdown-item">Action</li>
+            <hr class="my-2">
+            <li class="dropdown-item bg-colorTwo-h pe-auto">Another action</li>
+            <li class="dropdown-item bg-colorTwo-h pe-auto">
+              <span>Profile</span>
+            </li>
+            <li class="dropdown-item bg-colorTwo-h pe-auto rounded-bottom">
+              Previous Orders
+            </li>
+          </div>
+          <div *ngIf="userSignIn">
+            <li class="dropdown-item bg-colorTwo-h pe-auto">Action</li>
+            <hr class="my-2">
+            <li class="dropdown-item bg-colorTwo-h pe-auto">
+              <span>Profile</span>
+            </li>
+            <li class="dropdown-item bg-colorTwo-h pe-auto">
+              Previous Orders
+            </li>
+            <li class="dropdown-item bg-colorTwo-h pe-auto rounded-bottom">
+              <i class="bi bi-door-open"></i>
+              Logout
+            </li>
+          </div>
         </ul>
       </div>
 
-      <ul class="nav h-100 float-end pe-2 d-none d-sm-flex">
+      <p *ngIf="headerTwo" class="name fw-bold">{{headerTwoHeading}}</p>
+
+      <ul *ngIf="!headerTwo" class="nav h-100 float-end pe-2 d-none d-sm-flex">
         <li class="nav-item">
           <a routerLink="/home" routerLinkActive="active" class="nav-link"><span>Home</span></a>
         </li>
@@ -73,7 +84,9 @@
       </ul>
 
     </div>
-    <div *ngIf="true" class="col-12 position-relative">
+
+    <!-- This Non-Dynamic Header -->
+    <!-- <div *ngIf="true" class="col-12 position-relative">
       <a href="/" class="app-icon py-2 text-dark fw-bold">
         <i class="bi bi-arrow-left-short fs-3"></i>
         <span class="app-heading">Back</span>
@@ -134,9 +147,11 @@
       </div>
 
       <p class="name fw-bold">Fill Out</p>
-    </div>
+    </div> -->
 
   </div>
 </div>
 
-<router-outlet></router-outlet>
+<div class="h-100">
+  <router-outlet></router-outlet>
+</div>

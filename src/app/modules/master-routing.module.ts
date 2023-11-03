@@ -25,6 +25,18 @@ const routes: Routes = [
         path: 'about',
         loadChildren: () => import('./about/about.module').then((m) => m.AboutModule)
       },
+      {
+        path: 'fill-out',
+        loadChildren: () => import('./fill-out/fill-out.module').then((m) => m.FillOutModule)
+      },
+      {
+        path: 'request-training',
+        loadChildren: () => import('./request-training/request-training.module').then((m) => m.RequestTrainingModule)
+      },
+      {
+        path: 'training-progress',
+        loadChildren: () => import('./training-progress/training-progress.module').then((m) => m.TrainingProgressModule)
+      },
     ]
   }
 ];
