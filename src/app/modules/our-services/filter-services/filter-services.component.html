@@ -2,28 +2,28 @@
   <div class="col-6 p-2">
     <mat-form-field class="example-form-field w-100" appearance="outline">
       <mat-icon matPrefix>search</mat-icon>
-      <input matInput type="text" [(ngModel)]="value" placeholder="sreach filters" (keyup)="searchFilter()">
-      <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''; searchFilter()">
+      <input matInput type="text" [(ngModel)]="inputValue" placeholder="sreach filters" (keyup)="searchFilter(); updateCol(currentFilter)">
+      <button *ngIf="inputValue" matSuffix mat-icon-button aria-label="Clear" (click)="inputValue = ''; searchFilter(); updateCol(currentFilter)">
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
   </div>
   <div class="col-6 p-2">
     <ul class="nav float-end text-secondary">
-      <li class="mx-1 d-flex align-items-center filter-single" (click)="columsFilter('col-block', 'filter-single')">
+      <li class="mx-1 d-flex align-items-center filter-single" (click)="columsFilter('col-block', 'filter-single', false)">
         <svg class="svg-icon">
           <rect width="15" height="3" rx="1.5"></rect>
           <rect width="15" height="3" y="6" rx="1.5"></rect>
           <rect width="15" height="3" y="12" rx="1.5"></rect>
         </svg>
       </li>
-      <li class="mx-1 d-flex align-items-center filter-double active" (click)="columsFilter('col-6', 'filter-double')">
+      <li class="mx-1 d-flex align-items-center filter-double active" (click)="columsFilter('col-6', 'filter-double', false)">
         <i class="bi bi-grid-fill"></i>
       </li>
-      <li class="mx-1 d-flex align-items-center d-none d-sm-block filter-triple" (click)="columsFilter('col-4', 'filter-triple')">
+      <li class="mx-1 d-flex align-items-center d-none d-sm-block filter-triple" (click)="columsFilter('col-4', 'filter-triple', false)">
         <i class="bi bi-grid-3x2-gap-fill"></i>
       </li>
-      <li class="mx-1 d-flex align-items-center d-sm-none single-full" (click)="columsFilter('col-12', 'single-full')">
+      <li class="mx-1 d-flex align-items-center d-sm-none single-full" (click)="columsFilter('col-12', 'single-full', false)">
         <i class="bi bi-square-fill fs-5"></i>
       </li>
     </ul>

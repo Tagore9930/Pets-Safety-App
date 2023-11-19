@@ -1,3 +1,431 @@
-<div class="request-training">
-  <h1>request-training works!</h1>
+<div class="request-training w-100 py-1">
+  <form class="bg-white mx-auto pb-1">
+    <header class="mx-auto py-5 border-bottom border-gray d-flex text-center w-100">
+      <p class="header-title fw-medium text-white ps-3 m-auto">Dog Training Request Form</p>
+    </header>
+    <main>
+
+      <div class="scheduler pt-5">
+        <div class="clients">
+          <p class="fw-medium px-4 mb-0">New client or existing client?</p>
+          <label class="gender d-block ms-3 mb-3 pb-0">
+            <input type="radio" name="gender" class="d-none">
+            <span class="checkmark rounded-circle"></span>
+            <span>New client</span>
+          </label>
+          <label class="gender d-block ms-3 mb-3 pb-0">
+            <input type="radio" name="gender" class="d-none">
+            <span class="checkmark rounded-circle"></span>
+            <span>Existing client</span>
+          </label>
+        </div>
+        <div class="dateTime">
+          <p class="fw-medium px-4 mb-0">Requested appointment date and time</p>
+          <div class="row mx-1 p-2">
+            <div class="col-sm-6 pt-1 ">
+              <mat-card class="demo-inline-calendar-card">
+                <mat-calendar [(selected)]="selected" [minDate]="minDate" [maxDate]="maxDate" ></mat-calendar>
+              </mat-card>
+            </div>
+            <div class="col-sm-6 pt-1 ">
+              <div class="row">
+                <div class="col-12">
+                  <p class="text-nowrap overflow-hidden text-truncate">{{selected | date : 'EEE, MMM d'}}</p>
+                </div>
+                <!-- <div class="col-6 " >
+                  <div class="buttonsGroup float-end">
+                    <button type="button" (click)="incrementDate()" class="changeDates-btn mx-1 px-1 pt-1 -end btn btn-outline-primary rounded-circle">
+                      <mat-icon>chevron_left</mat-icon>
+                    </button>
+                    <button type="button" class="changeDates-btn mx-1 px-1 pt-1 -end btn btn-outline-primary rounded-circle" >
+                      <mat-icon>chevron_right</mat-icon>
+                    </button>
+                  </div>
+                </div> -->
+              </div>
+              <div class="row">
+                <div class="col-6" *ngFor="let slot of availableTimes; let i = index">
+                  <button type="button" class="btn btn-outline-primary timeButtons w-100 my-1" [class.active]="isActive == i" (click)="selectTime(i, $event)">{{slot.time}}</button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 mt-3">
+                <p class="bg-color text-white rounded-2 px-3 py-1    visiblity-none requestSelectedTime" >You’ve selected {{isTime}} on {{selected | date : 'EEEE, MMMM dd'}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="ownerInfo">
+        <div class="row my-2 ">
+          <div class="col-12 ownerInfo-Title py-3 my-2">
+            <h4 class="text-white mb-0">Owner Information</h4>
+          </div>
+        </div>
+
+        <div class="fullName">
+          <p class="fw-medium px-4 mb-0">Name</p>
+          <div class="row mx-1 mb-3 p-2">
+            <div class="col-sm-6 pt-1 ">
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Enter First Name</mat-label>
+                <input matInput type="text">
+                <!-- I will Update Errors in soon -->
+                <!-- <mat-error *ngIf="loginForm?.controls['email']?.errors?.required">Please Enter Email Id</mat-error>
+                <mat-error *ngIf="loginForm?.controls['email']?.errors?.email">Please Enter Valid Email Id
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+            <div class="col-sm-6 pt-1 ">
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Enter Last Name</mat-label>
+                <input matInput type="text">
+                <!-- I will Update Errors in soon -->
+                <!-- <mat-error *ngIf="loginForm?.controls['email']?.errors?.required">Please Enter Email Id</mat-error>
+                <mat-error *ngIf="loginForm?.controls['email']?.errors?.email">Please Enter Valid Email Id
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="phone">
+          <p class="fw-medium px-4 mb-0">Phone Number</p>
+          <div class="row mx-1 mb-3 p-2">
+            <div class="col-sm-6 pt-1 ">
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Enter Phone Number</mat-label>
+                <input matInput type="number">
+                <!-- I will Update Errors in soon -->
+                <!-- <mat-error *ngIf="loginForm?.controls['email']?.errors?.required">Please Enter Email Id</mat-error>
+                <mat-error *ngIf="loginForm?.controls['email']?.errors?.email">Please Enter Valid Email Id
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="email">
+          <p class="fw-medium px-4 mb-0">Email</p>
+          <div class="row mx-1 mb-3 p-2">
+            <div class="col-sm-6 pt-1 ">
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Enter Email Address</mat-label>
+                <input matInput type="email">
+                <!-- I will Update Errors in soon -->
+                <!-- <mat-error *ngIf="loginForm?.controls['email']?.errors?.required">Please Enter Email Id</mat-error>
+                <mat-error *ngIf="loginForm?.controls['email']?.errors?.email">Please Enter Valid Email Id
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="address">
+          <p class="fw-medium px-4 mb-0">Address</p>
+          <div class="row mx-1 mb-3 p-2">
+            <div class="col-12 pt-1 ">
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Enter Street Address</mat-label>
+                <input matInput type="text">
+                <!-- I will Update Errors in soon -->
+                <!-- <mat-error *ngIf="loginForm?.controls['email']?.errors?.required">Please Enter Email Id</mat-error>
+                <mat-error *ngIf="loginForm?.controls['email']?.errors?.email">Please Enter Valid Email Id
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row mx-1 mb-3 p-2">
+            <div class="col-12 pt-1 ">
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Enter Street Address Line 2</mat-label>
+                <input matInput type="text">
+                <!-- I will Update Errors in soon -->
+                <!-- <mat-error *ngIf="loginForm?.controls['email']?.errors?.required">Please Enter Email Id</mat-error>
+                <mat-error *ngIf="loginForm?.controls['email']?.errors?.email">Please Enter Valid Email Id
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row mx-1 mb-3 p-2">
+            <div class="col-sm-6 pt-1 ">
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Enter City</mat-label>
+                <input matInput type="text">
+                <!-- I will Update Errors in soon -->
+                <!-- <mat-error *ngIf="loginForm?.controls['email']?.errors?.required">Please Enter Email Id</mat-error>
+                <mat-error *ngIf="loginForm?.controls['email']?.errors?.email">Please Enter Valid Email Id
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+            <div class="col-sm-6 pt-1 ">
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Enter State/Province</mat-label>
+                <input matInput type="text">
+                <!-- I will Update Errors in soon -->
+                <!-- <mat-error *ngIf="loginForm?.controls['email']?.errors?.required">Please Enter Email Id</mat-error>
+                <mat-error *ngIf="loginForm?.controls['email']?.errors?.email">Please Enter Valid Email Id
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="row mx-1 mb-3 p-2">
+          <div class="col-12 pt-1 ">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Enter Postal/Zip Code</mat-label>
+              <input matInput type="text">
+              <!-- I will Update Errors in soon -->
+              <!-- <mat-error *ngIf="loginForm?.controls['email']?.errors?.required">Please Enter Email Id</mat-error>
+              <mat-error *ngIf="loginForm?.controls['email']?.errors?.email">Please Enter Valid Email Id
+              </mat-error> -->
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="dogInfo">
+        <div class="row my-2 ">
+          <div class="col-12 dogInfo-Title py-3 my-2">
+            <h4 class="text-white mb-0">Dog Information</h4>
+          </div>
+        </div>
+        <div class="breed">
+          <p class="fw-medium px-4 mb-0">Breed</p>
+          <div class="row mx-1 mb-3 p-2">
+            <div class="col-sm-6 pt-1 ">
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Enter Breed</mat-label>
+                <input matInput type="text">
+                <!-- I will Update Errors in soon -->
+                <!-- <mat-error *ngIf="loginForm?.controls['email']?.errors?.required">Please Enter Email Id</mat-error>
+                <mat-error *ngIf="loginForm?.controls['email']?.errors?.email">Please Enter Valid Email Id
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="dogName">
+          <p class="fw-medium px-4 mb-0">Name of the dog</p>
+          <div class="row mx-1 mb-3 p-2">
+            <div class="col-sm-6 pt-1 ">
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Enter Name of the dog</mat-label>
+                <input matInput type="text">
+                <!-- I will Update Errors in soon -->
+                <!-- <mat-error *ngIf="loginForm?.controls['email']?.errors?.required">Please Enter Email Id</mat-error>
+                <mat-error *ngIf="loginForm?.controls['email']?.errors?.email">Please Enter Valid Email Id
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="dogGenger">
+          <p class="fw-medium px-4 mb-0">Gender of the dog</p>
+          <label class="gender d-block ms-3 mb-3 pb-0">
+            <input type="radio" name="gender" class="d-none">
+            <span class="checkmark rounded-circle"></span>
+            <span>Male</span>
+          </label>
+          <label class="gender d-block ms-3 mb-3 pb-0">
+            <input type="radio" name="gender" class="d-none">
+            <span class="checkmark rounded-circle"></span>
+            <span>Female</span>
+          </label>
+        </div>
+        <div class="dogWeight">
+          <p class="fw-medium px-4 mb-0">Weight of dog</p>
+          <div class="row mx-1 mb-3 p-2">
+            <div class="col-sm-6 pt-1 ">
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Enter Weight of dog</mat-label>
+                <input matInput type="text">
+                <!-- I will Update Errors in soon -->
+                <!-- <mat-error *ngIf="loginForm?.controls['email']?.errors?.required">Please Enter Email Id</mat-error>
+                <mat-error *ngIf="loginForm?.controls['email']?.errors?.email">Please Enter Valid Email Id
+                </mat-error> -->
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="dogSpayed">
+          <p class="fw-medium px-4 mb-0">Is the dog spayed /neutered? </p>
+          <label class="gender d-block ms-3 mb-3 pb-0">
+            <input type="radio" name="spayed" class="d-none">
+            <span class="checkmark rounded-circle"></span>
+            <span>Yes</span>
+          </label>
+          <label class="gender d-block ms-3 mb-3 pb-0">
+            <input type="radio" name="spayed" class="d-none">
+            <span class="checkmark rounded-circle"></span>
+            <span>No</span>
+          </label>
+        </div>
+        <div class="dogHealthy">
+          <p class="fw-medium px-4 mb-0">Is the dog in good and healthy condition?</p>
+          <label class="gender d-block ms-3 mb-3 pb-0">
+            <input type="radio" name="healthy" class="d-none">
+            <span class="checkmark rounded-circle"></span>
+            <span>Yes</span>
+          </label>
+          <label class="gender d-block ms-3 mb-3 pb-0">
+            <input type="radio" name="healthy" class="d-none">
+            <span class="checkmark rounded-circle"></span>
+            <span>No</span>
+          </label>
+        </div>
+        <div class="dogServices">
+          <p class="fw-medium px-4 mb-0">Is the dog in good and healthy condition?</p>
+          <label class="service d-block ms-3 mb-3 pb-0">
+            <input type="checkbox" class="d-none">
+            <span class="checkmark"></span>
+            <span>Basic class</span>
+          </label>
+          <label class="service d-block ms-3 mb-3 pb-0">
+            <input type="checkbox" class="d-none">
+            <span class="checkmark"></span>
+            <span>Intermediate class</span>
+          </label>
+          <label class="service d-block ms-3 mb-3 pb-0">
+            <input type="checkbox" class="d-none">
+            <span class="checkmark"></span>
+            <span>Advanced class</span>
+          </label>
+          <label class="service d-block ms-3 mb-3 pb-0">
+            <input type="checkbox" class="d-none">
+            <span class="checkmark"></span>
+            <span>Jumping and retrieving class</span>
+          </label>
+          <label class="service d-block ms-3 mb-3 pb-0">
+            <input type="checkbox" class="d-none">
+            <span class="checkmark"></span>
+            <span>Behavior modification</span>
+          </label>
+          <label class="service d-block ms-3 mb-3 pb-0">
+            <input type="checkbox" class="d-none">
+            <span class="checkmark"></span>
+            <span>Obedience class</span>
+          </label>
+          <label class="service d-block ms-3 mb-3 pb-0">
+            <input type="checkbox" class="d-none">
+            <span class="checkmark"></span>
+            <span>Consulting or assessment</span>
+          </label>
+          <label class="service others d-block ms-3 pb-0 mb-3">
+            <input type="checkbox" class="d-none">
+            <span class="checkmark"></span>
+            <span>Other</span>
+            <div class="row mx-1 d-none">
+              <div class="col-12 p-0">
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>Enter Postal/Zip Code</mat-label>
+                  <input matInput type="text">
+                  <!-- I will Update Errors in soon -->
+                  <!-- <mat-error *ngIf="loginForm?.controls['email']?.errors?.required">Please Enter Email Id</mat-error>
+                  <mat-error *ngIf="loginForm?.controls['email']?.errors?.email">Please Enter Valid Email Id
+                  </mat-error> -->
+                </mat-form-field>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <div class="row mx-1 mb-3 p-2">
+          <div class="col-12 pt-1 ">
+            <p class="fw-medium ">What is your primary concern about your dog?</p>
+            <mat-form-field class="textarea w-100" appearance="outline">
+              <!-- <mat-label>Leave a comment</mat-label> -->
+              <textarea matInput placeholder="Type here..." class="pt-2"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="dogAggressive">
+          <p class="fw-medium px-4 mb-0">Is your dog aggressive?</p>
+          <label class="gender d-block ms-3 mb-3 pb-0">
+            <input type="radio" name="aggressive" class="d-none">
+            <span class="checkmark rounded-circle"></span>
+            <span>Yes</span>
+          </label>
+          <label class="gender d-block ms-3 mb-3 pb-0">
+            <input type="radio" name="aggressive" class="d-none">
+            <span class="checkmark rounded-circle"></span>
+            <span>No</span>
+          </label>
+        </div>
+        <div class="dogBlood">
+          <p class="fw-medium px-4 mb-0">Did you dog bitten anyone and drawn blood?</p>
+          <label class="gender d-block ms-3 mb-3 pb-0">
+            <input type="radio" name="blood" class="d-none">
+            <span class="checkmark rounded-circle"></span>
+            <span>Yes</span>
+          </label>
+          <label class="gender d-block ms-3 mb-3 pb-0">
+            <input type="radio" name="blood" class="d-none">
+            <span class="checkmark rounded-circle"></span>
+            <span>No</span>
+          </label>
+        </div>
+        <div class="dogVaccinations">
+          <p class="fw-medium px-4 mb-0">Is the dog updated on his/her vaccinations?</p>
+          <label class="gender d-block ms-3 mb-3 pb-0">
+            <input type="radio" name="vaccinations" class="d-none">
+            <span class="checkmark rounded-circle"></span>
+            <span>Yes</span>
+          </label>
+          <label class="gender d-block ms-3 mb-3 pb-0">
+            <input type="radio" name="vaccinations" class="d-none">
+            <span class="checkmark rounded-circle"></span>
+            <span>No</span>
+          </label>
+        </div>
+        <div class="dogE-collars">
+          <p class="fw-medium px-4 mb-0">Do you approve the use of e-collars on your dog?</p>
+          <label class="gender d-block ms-3 mb-3 pb-0">
+            <input type="radio" name="e-collars" class="d-none">
+            <span class="checkmark rounded-circle"></span>
+            <span>Yes</span>
+          </label>
+          <label class="gender d-block ms-3 mb-3 pb-0">
+            <input type="radio" name="e-collars" class="d-none">
+            <span class="checkmark rounded-circle"></span>
+            <span>No</span>
+          </label>
+        </div>
+        <div class="row mx-1 mb-3 p-2">
+          <div class="col-12 pt-1 ">
+            <p class="fw-medium ">Any special instructions?</p>
+            <mat-form-field class="textarea w-100" appearance="outline">
+              <!-- <mat-label>Leave a comment</mat-label> -->
+              <textarea matInput placeholder="Type here..." class="pt-2"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row mx-1 mb-3 p-2">
+          <div class="col-sm-6 pt-1 ">
+            <p class="fw-medium ">How did you hear about us?</p>
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Please Select</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{food.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+    <footer class="border-top border-gray">
+      <div class="row my-4 text-center">
+        <div class="col-sm-12 mx-auto">
+          <button type="button" class="btn btn-outline-success px-4 py-2 m-2">Save</button>
+          <button type="button" class="btn btn-danger px-5 py-2 m-2">Submit</button>
+        </div>
+      </div>
+    </footer>
+  </form>
+
 </div>

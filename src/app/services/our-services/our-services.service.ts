@@ -38,7 +38,7 @@ export class OurServicesService {
       id: 5,
       img: '/assets/services-images/pet-sitting.jpg',
       name: 'Pet Sitting',
-      amount: '$20.00',
+      amount: '$10.00',
       description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, cupiditate tenetur! Pariatur aliquid recusandae nisi incidunt, illo fugiat necessitatibus, maxime, obcaecati accusamus quod tempora numquam neque tempore fugit quo praesentium"
     },
     {

@@ -1,17 +1,17 @@
 <div class="services container-sm">
   <h4 class="text-colorTwo text-center fw-bold mb-3">Services</h4>
 
-  <app-filter-services (sendData)="receiveSearchData($event)" ></app-filter-services>
+  <app-filter-services (sendData)="receiveSearchData($event)" (updateCols)="getCol($event)" ></app-filter-services>
 
   <div class="row">
-    <div class="col-6 cards p-3" *ngFor="let item of filteredServicesList">
+    <div class="{{((col == undefined)? 'col-6' : col)}} cards p-3" *ngFor="let item of filteredServicesList">
       <div mat-button (click)="openDialog(item)" class="card bg-transparent pe-auto">
         <div class="card-image">
           <img src="{{item.img}}" class="w-100 rounded-top" alt="{{item.name}}">
         </div>
         <div class="card-body">
           <div class="card-content d-block">
-            <p class="card-text text-colorTwo">{{item.name}}</p>
+            <p class="card-text fs-5 text-colorTwo">{{item.name}}</p>
             <h5 class="card-title text-colorTwo fw-bold">{{item.amount}}</h5>
           </div>
           <button [routerLink]="['/about']" (click)="stop($event)"

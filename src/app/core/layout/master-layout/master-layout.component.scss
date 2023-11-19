@@ -29,9 +29,27 @@
     width: 13px;
     border-top: 1px solid #0000002d;
     border-left: 1px solid #0000002d;
+    z-index: -1;
 }
 
-.dropdown-menu { width: 250px; }
+.dropdown-menu {
+  width: 250px;
+  right: -15px !important;
+}
+
+.dropdown-item {
+  &:active, .dropdown-heading:hover {
+    background-color: transparent !important;
+    color: black !important;
+  }
+}
+
+
+.sign-up {
+  text-decoration: none;
+
+  &:hover { text-decoration: underline; }
+}
 
 .profile {
   .profile-icon {
@@ -75,3 +93,4 @@
   left: 50%;
   transform: translate(-25px, 0px);
 }
+

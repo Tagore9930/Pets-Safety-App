@@ -21,6 +21,10 @@ html, body {
 body {
   background-color: rgba($colorOne, $alpha: 0.5);
   margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 /* width */
@@ -52,11 +56,7 @@ body {
   background: $colorTwo;
 }
 
-::selection {
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
-}
+.visiblity-none { visibility: hidden;}
 
 .pe-auto { cursor: pointer !important; }
 

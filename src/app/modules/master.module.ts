@@ -7,7 +7,6 @@ import { TrainingProgressComponent } from './training-progress/training-progress
 
 @NgModule({
   declarations: [
-    TrainingProgressComponent
   ],
   imports: [
     CommonModule,

@@ -30,7 +30,6 @@
           width: 50% !important;
 
           .card-text {
-            margin-bottom: 0px !important;
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
@@ -51,4 +50,6 @@
   .services {
     width: 100% !important;
   }
+
+  .card-text { font-size: 16px !important; }
 }

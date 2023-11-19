@@ -11,6 +11,46 @@
         <span class="app-heading">Back</span>
       </a>
 
+      <div class="dropdown d-inline">
+        <a class="profile mt-2 me-3 float-end pe-auto" data-bs-toggle="dropdown">
+          <img class="profile-icon" src="/assets/header-images/profile.png" alt="">
+        </a>
+
+        <ul class="dropdown-menu py-0 mt-2" id="dropdown">
+          <div *ngIf="!userSignIn">
+            <li class="dropdown-item dropdown-heading text-center">
+              <p class="mb-1"><small>Login in to track your orders</small></p>
+              <button routerLink="/login" class="btn bg-colorTwo bg-colorTwo-h text-white w-100">Login</button>
+              <p class="mb-0">
+                <small>New customer?</small>
+                <button routerLink="/register" type="button" class="btn btn-link px-1 sign-up"><small>Sign up</small></button>
+              </p>
+            </li>
+            <hr class="my-0">
+            <li class="dropdown-item bg-colorTwo-h pe-auto">
+              <span>Profile</span>
+            </li>
+            <li class="dropdown-item bg-colorTwo-h pe-auto rounded-bottom">
+              Previous Orders
+            </li>
+          </div>
+          <div *ngIf="userSignIn">
+            <li class="dropdown-item bg-colorTwo-h dropdown-heading">Action</li>
+            <hr class="my-2">
+            <li class="dropdown-item bg-colorTwo-h pe-auto">
+              <span>Profile</span>
+            </li>
+            <li class="dropdown-item bg-colorTwo-h pe-auto">
+              Previous Orders
+            </li>
+            <li class="dropdown-item bg-colorTwo-h pe-auto rounded-bottom">
+              <i class="bi bi-door-open"></i>
+              Logout
+            </li>
+          </div>
+        </ul>
+      </div>
+
       <div *ngIf="!headerTwo" class="sidebar-mobile d-inline">
         <a class="pt-1 pe-3 float-end d-block d-sm-none" data-bs-toggle="offcanvas" data-bs-target="#dropdown">
           <i class="bi bi-list fs-1 fw-bold text-dark"></i>
@@ -35,39 +75,6 @@
         </div>
       </div>
 
-      <div class="dropdown d-inline">
-        <a class="profile mt-2 me-3 float-end pe-auto" data-bs-toggle="dropdown">
-          <img class="profile-icon" src="/assets/header-images/profile.png" alt="">
-        </a>
-
-        <ul class="dropdown-menu py-0 mt-2" id="dropdown">
-          <div *ngIf="!userSignIn">
-            <li class="dropdown-item">Action</li>
-            <hr class="my-2">
-            <li class="dropdown-item bg-colorTwo-h pe-auto">Another action</li>
-            <li class="dropdown-item bg-colorTwo-h pe-auto">
-              <span>Profile</span>
-            </li>
-            <li class="dropdown-item bg-colorTwo-h pe-auto rounded-bottom">
-              Previous Orders
-            </li>
-          </div>
-          <div *ngIf="userSignIn">
-            <li class="dropdown-item bg-colorTwo-h pe-auto">Action</li>
-            <hr class="my-2">
-            <li class="dropdown-item bg-colorTwo-h pe-auto">
-              <span>Profile</span>
-            </li>
-            <li class="dropdown-item bg-colorTwo-h pe-auto">
-              Previous Orders
-            </li>
-            <li class="dropdown-item bg-colorTwo-h pe-auto rounded-bottom">
-              <i class="bi bi-door-open"></i>
-              Logout
-            </li>
-          </div>
-        </ul>
-      </div>
 
       <p *ngIf="headerTwo" class="name fw-bold">{{headerTwoHeading}}</p>
 
