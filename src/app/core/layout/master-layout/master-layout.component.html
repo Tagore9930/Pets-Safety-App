@@ -11,6 +11,30 @@
         <span class="app-heading">Back</span>
       </a>
 
+      <div class="sidebar-mobile d-inline">
+        <a class="pt-1 pe-3 float-end d-block d-sm-none" data-bs-toggle="offcanvas" data-bs-target="#dropdown">
+          <i class="bi bi-list fs-1 fw-bold text-dark"></i>
+        </a>
+
+        <div class="offcanvas offcanvas-start w-75" tabindex="-1" id="dropdown" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Pages</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <ul class="list-group">
+            <li class="d-block px-3 py-2">
+              <a routerLink="/home" routerLinkActive="active" class="nav-link"><span>Home</span></a>
+            </li>
+            <li class="d-block px-3 py-2">
+              <a routerLink="/services" routerLinkActive="active" class="nav-link"><span>Services</span></a>
+            </li>
+            <li class="d-block px-3 py-2">
+              <a routerLink="/about" routerLinkActive="active" class="nav-link"><span>About</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <div class="dropdown d-inline">
         <a class="profile mt-2 me-3 float-end pe-auto" data-bs-toggle="dropdown">
           <img class="profile-icon" src="/assets/header-images/profile.png" alt="">
@@ -51,31 +75,6 @@
         </ul>
       </div>
 
-      <div *ngIf="!headerTwo" class="sidebar-mobile d-inline">
-        <a class="pt-1 pe-3 float-end d-block d-sm-none" data-bs-toggle="offcanvas" data-bs-target="#dropdown">
-          <i class="bi bi-list fs-1 fw-bold text-dark"></i>
-        </a>
-
-        <div class="offcanvas offcanvas-start w-75" tabindex="-1" id="dropdown" aria-labelledby="offcanvasNavbarLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Pages</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <ul class="list-group">
-            <li class="d-block px-3 py-2">
-              <a routerLink="/home" routerLinkActive="active" class="nav-link"><span>Home</span></a>
-            </li>
-            <li class="d-block px-3 py-2">
-              <a routerLink="/services" routerLinkActive="active" class="nav-link"><span>Services</span></a>
-            </li>
-            <li class="d-block px-3 py-2">
-              <a routerLink="/about" routerLinkActive="active" class="nav-link"><span>About</span></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-
       <p *ngIf="headerTwo" class="name fw-bold">{{headerTwoHeading}}</p>
 
       <ul *ngIf="!headerTwo" class="nav h-100 float-end pe-2 d-none d-sm-flex">
@@ -93,8 +92,8 @@
     </div>
 
     <!-- This Non-Dynamic Header -->
-    <!-- <div *ngIf="true" class="col-12 position-relative">
-      <a href="/" class="app-icon py-2 text-dark fw-bold">
+    <!-- <div *ngIf="headerTwo" class="col-12 position-relative">
+      <a href="/home" class="app-icon py-2 text-dark fw-bold">
         <i class="bi bi-arrow-left-short fs-3"></i>
         <span class="app-heading">Back</span>
       </a>
@@ -160,5 +159,5 @@
 </div>
 
 <div class="h-100">
-  <router-outlet></router-outlet>
+  <router-outlet (activate)="changeOfRoutes()"></router-outlet>
 </div>

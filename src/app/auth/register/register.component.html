@@ -1,1 +1,118 @@
-<h1>register works!</h1>
+<div class="sign-up">
+  <div class="container-lg py-3  main-container row align-items-center mx-auto">
+    <div class="d-flex justify-content-center h-100">
+      <div class="col-md-6 bg-white p-4 shadow form-container">
+        <div class="row align-items-center h-100">
+          <div>
+            <div class="row">
+              <img src="/assets/header-images/App-Icon.jpg" alt="" class="appIcon rounded-circle mx-auto ">
+              <h4 class="text-center text-color ">Sign Up</h4>
+              <!-- <p class="text-color text-center fs-5 fw-sembold mb-1">Sign Up</p> -->
+            </div>
+            <form *ngIf="!signWithEmail">
+              <a href="https://www.facebook.com/" class="text-white text-decoration-none m-2">
+                <div class="icons bg-fb-color w-100 p-1 rounded-2 text-center">
+                  <img src="/assets/login-images/facebook.jpg" class="facebook ms-1 border rounded-circle" alt="">
+                  <span class="ps-2">Sign up with Facebook</span>
+                </div>
+              </a>
+              <a href="https://www.google.com/" class="text-white text-decoration-none m-2">
+                <div class="icons bg-googlr-color w-100 p-2 pb-1 rounded-2 text-center">
+                  <i class="bg-white py-2 rounded-circle">
+                    <img src="/assets/login-images/google.jpg" class="google mx-1" alt="">
+                  </i>
+                  <span class="ps-2">Sign up with Google</span>
+                </div>
+              </a>
+              <hr class="hr-text text-center border-0 m-0" data-content="OR" />
+              <a (click)="signWithEmail = true" class="text-decoration-none m-2 pe-auto ">
+                <div class="email w-100 p-2 rounded-2 text-white">
+                    <mat-icon>mail_outline</mat-icon>
+                    <span class="ps-2">Sign up with Email</span>
+                </div>
+              </a>
+              <p class="text-center py-2">
+                <span>Already have an account? </span>
+                <a routerLink="/login" class="text-primary text-decoration-none pe-auto"> Log in </a>
+              </p>
+            </form>
+            <form *ngIf="signWithEmail" class="px-5" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="w-100 py-1" appearance="outline">
+                    <mat-label>Enter Name</mat-label>
+                    <mat-icon matPrefix class="my-icon">perm_identity</mat-icon>
+                    <input class="pt-2" matInput type="email" [formControl]="signupForm.controls['Name']">
+                    <mat-error *ngIf="signupForm?.controls['Name']?.errors?.required">Please Enter Name</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="w-100 py-1" appearance="outline">
+                    <mat-label>Enter Email ID</mat-label>
+                    <mat-icon matPrefix class="my-icon">mail_outline</mat-icon>
+                    <input class="pt-2" matInput type="email" [formControl]="signupForm.controls['Email']">
+                    <mat-error *ngIf="signupForm?.controls['Email']?.errors?.required">Please Enter Email Id</mat-error>
+                    <mat-error *ngIf="signupForm?.controls['Email']?.errors?.email">Please Enter Valid Email Id
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="w-100 py-1" appearance="outline">
+                    <mat-label>Enter password</mat-label>
+                    <mat-icon matPrefix class="my-icon">lock_open</mat-icon>
+                    <input  class="pt-2" matInput [type]="hideOne ? 'password' : 'text'"
+                      [formControl]="signupForm?.controls['Password']" >
+                    <button type="button" mat-icon-button matSuffix (click)="hideOne = !hideOne">
+                      <mat-icon>{{hideOne ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="signupForm?.controls['Password']?.errors?.required">Please Enter
+                      Password</mat-error>
+                    <mat-error *ngIf="signupForm?.controls['Password']?.hasError('minlength')">Please Enter Valid
+                      Password</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="w-100 py-1" appearance="outline">
+                    <mat-label>Enter Confirm Password</mat-label>
+                    <mat-icon matPrefix class="my-icon">lock_open</mat-icon>
+                    <input class="pt-2" matInput [type]="hideTwo ? 'password' : 'text'"
+                      [formControl]="signupForm?.controls['ConfirmPassword']" >
+                    <button type="button" mat-icon-button matSuffix (click)="hideTwo = !hideTwo">
+                      <mat-icon>{{(hideTwo) ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="signupForm?.controls['ConfirmPassword']?.errors?.required">Please Enter Password</mat-error>
+                    <mat-error *ngIf="signupForm?.controls['ConfirmPassword']?.errors?.validatePassword">Password not
+                      match</mat-error>
+                      <mat-error *ngIf="signupForm?.controls['ConfirmPassword']?.hasError('minlength')">Please Enter Valid
+                      Password</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <button mat-stroked-button type="submit"
+                    class="btn btn-primary bg-color text-white w-100">Submit</button>
+                </div>
+              </div>
+              <span (click)="signWithEmail = false" class="d-flex align-items-center m-0 py-2 text-primary pe-auto">
+                <mat-icon>chevron_left</mat-icon>
+                <span>More sign up options</span>
+              </span>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 wallpaper-container bg-color p-4  ps-0 shadow d-none d-md-block">
+        <img src="/assets/login-images/login-pic.jpg" class="wallpaper-img w-100" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
+

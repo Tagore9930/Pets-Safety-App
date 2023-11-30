@@ -1,1 +1,84 @@
-<h1>login works!</h1>
+<div class="login">
+  <div class="container-lg py-3  main-container row align-items-center mx-auto">
+    <div class="d-flex justify-content-center h-100">
+      <div class="col-md-6 bg-white p-4 shadow form-container">
+        <div class="row justify-content-center align-items-center h-100">
+          <div>
+            <div class="row">
+              <img src="/assets/header-images/App-Icon.jpg" alt="" class="appIcon rounded-circle mx-auto ">
+              <h4 class="text-center text-color">Login</h4>
+            </div>
+            <form class="px-5" [formGroup]="loginForm" (ngSubmit)="onSubmit(remember)">
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="w-100 py-1" appearance="outline">
+                    <mat-label>Enter Email ID</mat-label>
+                    <mat-icon matPrefix class="my-icon">mail_outline</mat-icon>
+                    <input class="pt-2" matInput type="email" [formControl]="loginForm.controls['email']">
+                    <!-- I will Update Errors in soon -->
+                    <mat-error *ngIf="loginForm?.controls['email']?.errors?.required">Please Enter Email Id</mat-error>
+                  <mat-error *ngIf="loginForm?.controls['email']?.errors?.email">Please Enter Valid Email Id
+                  </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="w-100 py-1" appearance="outline">
+                    <mat-label>Enter password</mat-label>
+                    <mat-icon matPrefix class="my-icon">lock_open</mat-icon>
+                    <input class="pt-2" matInput [type]="hide ? 'password' : 'text'" [formControl]="loginForm?.controls['password']" >
+                    <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="loginForm?.controls['password']?.errors?.required" >Please Enter Password</mat-error>
+                    <mat-error *ngIf="loginForm?.controls['password']?.hasError('minlength')" >Please Enter Valid Password</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6 remainder-me">
+                  <label class="pe-auto">
+                    <input type="checkbox" class="pe-auto" #remember > Remember me
+                  </label>
+                </div>
+                <div class="col-6 forgot">
+                  <p class="float-end">
+                    <a href="#">Forgot Password</a>
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <button mat-stroked-button type="submit" class="btn btn-primary bg-color text-white w-100">Submit</button>
+                </div>
+              </div>
+              <hr class="hr-text text-center border-0" data-content="OR" />
+              <div class="d-flex justify-content-center">
+                <div class="icons">
+                  <a href="https://www.facebook.com/">
+                    <img src="/assets/login-images/facebook.jpg" class="facebook mx-1" alt="">
+                  </a>
+                </div>
+                <div class="icons">
+                  <a href="https://www.google.com/">
+                    <img src="/assets/login-images/google.jpg" class="google mx-1" alt="">
+                  </a>
+                </div>
+              </div>
+              <p class="text-center py-2">
+                <span>Don’t have an account?</span>
+                <a routerLink="/register" class="text-primary text-decoration-none pe-auto" > Sign up </a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 wallpaper-container bg-color p-4  ps-0 shadow d-none d-md-block">
+        <img src="/assets/login-images/login-pic.jpg" class="wallpaper-img w-100" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,10 @@
+@import "/src/styles.scss";
+
+.loader {
+  z-index: 1000;
+  position: absolute;
+
+  .text-color {
+    color: $colorTwo-hover;
+  }
+}

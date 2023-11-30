@@ -18,6 +18,15 @@ const routes: Routes = [
     path: 'forgot-password',
     loadChildren: () => import("./auth/forgot-password/forgot-password.module").then((m) => m.ForgotPasswordModule)
   },
+  {
+    path: '404',
+    loadChildren: () => import("./modules/not-found/not-found.module").then((m) => m.NotFoundModule)
+  },
+  {
+    path: '**',
+    redirectTo: '/404',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({
